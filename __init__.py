@@ -10,11 +10,6 @@ import os
 import bpy
 
 
-# initial links variable
-github_url = "https://github.com/mdsanima-dev/mdsanima-render-time/"
-issues_url = github_url + "issues"
-mdsanima_url = "https://mdsanima.com"
-
 # addon information dictionary
 bl_info = {
     "name": "MDSANIMA RenderTime",
@@ -26,9 +21,9 @@ bl_info = {
     "blender": (2, 93, 2),
     "location": "View3D > UI",
     "warning": "",
-    "doc_url": github_url,
-    "tracker_url": issues_url,
-    "link": mdsanima_url,
+    "doc_url": "https://github.com/mdsanima-dev/mdsanima-render-time/",
+    "tracker_url": "https://github.com/mdsanima-dev/mdsanima-render-time/issues",
+    "link": "https://mdsanima.com",
     "support": "TESTING",
     "category": "Render"
     }
