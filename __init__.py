@@ -20,6 +20,7 @@ bl_info = {
 import bpy
 
 from .core.mdsrt_timer import rt_stats
+from .core.mdsrt_timer import ti_init, ti_start, ti_complete, ti_cancel
 
 
 class MDSRT_PT_render_time(bpy.types.Panel):
