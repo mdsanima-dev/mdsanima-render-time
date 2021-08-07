@@ -19,7 +19,7 @@ bl_info = {
 
 import bpy
 
-from .core.mdsrt_timer import rt_init, rt_start, rt_complete, rt_cancel
+from .core.mdsrt_timer import rt_stats
 
 
 class MDSRT_PT_render_time(bpy.types.Panel):
@@ -46,10 +46,7 @@ class MDSRT_PT_render_time(bpy.types.Panel):
 
 def register():
     bpy.utils.register_class(MDSRT_PT_render_time)
-    bpy.app.handlers.render_init.append(rt_init)
-    bpy.app.handlers.render_pre.append(rt_start)
-    bpy.app.handlers.render_complete.append(rt_complete)
-    bpy.app.handlers.render_cancel.append(rt_cancel)
+    rt_stats()
 
 
 def unregister():

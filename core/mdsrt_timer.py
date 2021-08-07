@@ -1,34 +1,46 @@
 """
 Module contains functions to printing render time in the console.
-Functions returning the date and time.
+Functions returning the date and time for actual renderig.
 """
 
 
+from bpy.app import handlers
 from datetime import datetime
 
 
-rt_info = "[MDSANIMA RT]"
+def rt_stats():
+    rt_info = "[MDSANIMA RT]"
 
 
-def rt_init(scene):
-    time_init = datetime.now()
-    print(rt_info, "->", str(time_init).ljust(26), "=> Render Init")
-    return time_init
+    @handlers.persistent
+    def rt_init(dummy):
+        ti_init = datetime.now()
+        print(rt_info, "->", str(ti_init).ljust(26), "=> Render Init")
+        return ti_init
 
 
-def rt_start(scene):
-    time_start = datetime.now()
-    print(rt_info, "->", str(time_start).ljust(26), "=> Render Start")
-    return time_start
+    @handlers.persistent
+    def rt_start(dummy):
+        ti_start = datetime.now()
+        print(rt_info, "->", str(ti_start).ljust(26), "=> Render Start")
+        return ti_start
 
 
-def rt_complete(scene):
-    time_complete = datetime.now()
-    print(rt_info, "->", str(time_complete).ljust(26), "=> Render Complete")
-    return time_complete
+    @handlers.persistent
+    def rt_complete(dummy):
+        ti_complete = datetime.now()
+        print(rt_info, "->", str(ti_complete).ljust(26), "=> Render Complete")
+        return ti_complete
 
 
-def rt_cancel(scene):
-    time_cancel = datetime.now()
-    print(rt_info, "->", str(time_cancel).ljust(26), "=> Render Cancel")
-    return time_cancel
+    @handlers.persistent
+    def rt_cancel(dummy):
+        ti_cancel = datetime.now()
+        print(rt_info, "->", str(ti_cancel).ljust(26), "=> Render Cancel")
+        return ti_cancel
+
+
+    handlers.render_init.append(rt_init)
+    handlers.render_pre.append(rt_start)
+    handlers.render_complete.append(rt_complete)
+    handlers.render_cancel.append(rt_cancel)
