@@ -23,7 +23,7 @@ bl_info = {
     "license": "GPL",
     "deps": "",
     "version": (0, 1, 0),
-    "blender": (2, 93, 1),
+    "blender": (2, 93, 2),
     "location": "View3D > UI",
     "warning": "",
     "doc_url": github_url,
