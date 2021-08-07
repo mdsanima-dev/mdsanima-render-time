@@ -1,3 +1,21 @@
+"""
+Blender Addon for estimated total rendering time for all frames in your
+animation.
+
+Creates a Panel in the UI 3D View to show rendering statistic.
+"""
+
+
+import os
+import bpy
+
+
+# initial links variable
+github_url = "https://github.com/mdsanima-dev/mdsanima-render-time/"
+issues_url = github_url + "issues"
+mdsanima_url = "https://mdsanima.com"
+
+# addon information dictionary
 bl_info = {
     "name": "MDSANIMA RenderTime",
     "description": "Estimated total rendering time for all frames",
@@ -8,23 +26,20 @@ bl_info = {
     "blender": (2, 93, 1),
     "location": "View3D > UI",
     "warning": "",
-    "doc_url": "https://github.com/mdsanima-dev/mdsanima-render-time/",
-    "wiki_url": "https://github.com/mdsanima-dev/mdsanima-render-time/wiki",
-    "tracker_url": "https://github.com/mdsanima-dev/mdsanima-render-time/issues",
-    "link": "https://mdsanima.com",
+    "doc_url": github_url,
+    "tracker_url": issues_url,
+    "link": mdsanima_url,
     "support": "TESTING",
     "category": "Render"
     }
 
-
-import os
-import bpy
 
 from .core.mdsrt_timer import rt_stats
 from .core.mdsrt_timer import ti_init, ti_start, ti_complete, ti_cancel
 
 
 class MDSRT_PT_render_time(bpy.types.Panel):
+    """Creates a Panel in the UI 3D View"""
     MDSRT_version = str(bl_info["version"])\
         .replace("(", "")\
         .replace(")", "")\
