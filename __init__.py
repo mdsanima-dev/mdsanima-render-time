@@ -26,7 +26,7 @@ bl_info = {
     "link": "https://mdsanima.com",
     "support": "TESTING",
     "category": "Render"
-    }
+}
 
 
 from .core.mdsrt_timer import rt_stats
@@ -109,6 +109,7 @@ class MDSRT_PT_render_time(bpy.types.Panel):
 
         # render button operator
         row = layout.row()
+        row.scale_y = 2.0
         row.operator("render.render", text="Render", icon_value=ico_b.icon_id)
 
 
