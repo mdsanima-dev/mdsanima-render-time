@@ -1,0 +1,12 @@
+{
+    "name": "mdsanima-render-time",
+    "version": "0.1.0",
+    "author": {
+      "name": "Marcin Różewski",
+      "email": "marcinrozewski@gmail.com"
+    },
+    "description": "Only for automate versioning and changelog generation",
+    "repository": "https://github.com/mdsanima-dev/mdsanima-render-time.git",
+    "homepage": "https://github.com/mdsanima-dev/mdsanima-render-time#readme",
+    "license": "GPL"
+}
