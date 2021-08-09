@@ -116,6 +116,24 @@ class MDSRT_PT_render_time(bpy.types.Panel):
         layout.separator()
 
 
+        # render time stats info
+        row = layout.row()
+        row.label(text="RT One Frame", icon="OUTPUT")
+        row.label(text="00:00:00:00")
+
+        row = layout.row()
+        row.label(text="RT All Frames", icon="FILE_MOVIE")
+        row.label(text="00:00:00:00")
+
+        row = layout.row()
+        row.label(text="Render Start", icon="PLUGIN")
+        row.label(text="2021-08-09 17:31:23")
+
+        row = layout.row()
+        row.label(text="Render Complete", icon="EXTERNAL_DRIVE")
+        row.label(text="2021-08-09 17:31:23")
+
+
 # initial dictionary for custom icons data
 preview_collections = {}
 
