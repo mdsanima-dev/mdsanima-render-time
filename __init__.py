@@ -8,6 +8,7 @@ Creates a Panel in the UI 3D View to show rendering statistic.
 
 import os
 import bpy
+from datetime import datetime
 
 
 # addon information dictionary
@@ -29,8 +30,55 @@ bl_info = {
 }
 
 
-from .core.mdsrt_timer import rt_stats
-from .core.mdsrt_timer import ti_init, ti_start, ti_complete, ti_cancel
+from bpy.app import handlers
+from datetime import datetime, timedelta
+
+
+# initail global variable timer
+ti_init = None
+ti_start = None
+ti_complete = None
+ti_cancel = None
+rt_init_render = None
+rt_one_frame = None
+rt_info = "[MDSANIMA RT]"
+
+
+@handlers.persistent
+def rt_init(dummy):
+    global ti_init
+    ti_init = datetime.now()
+    print(rt_info, "->", str(ti_init).ljust(26), "=> Render Init")
+
+
+@handlers.persistent
+def rt_start(dummy):
+    global ti_start
+    global rt_init_render
+    ti_start = datetime.now()
+    rt_init_render = (ti_start - ti_init)
+    print(rt_info, "->", str(ti_start).ljust(26), "=> Render Start")
+    print(rt_info, "->", "RT Initialization =>", rt_init_render)
+
+
+@handlers.persistent
+def rt_complete(dummy):
+    global ti_complete
+    global rt_one_frame
+    ti_complete = datetime.now()
+    rt_one_frame = (ti_complete - ti_start)
+    print(rt_info, "->", str(ti_complete).ljust(26), "=> Render Complete")
+    print(rt_info, "->", "RT One Frame =>", rt_one_frame)
+
+
+@handlers.persistent
+def rt_cancel(dummy):
+    global ti_cancel
+    global rt_one_frame
+    ti_cancel = datetime.now()
+    rt_one_frame = (ti_cancel - ti_start)
+    print(rt_info, "->", str(ti_cancel).ljust(26), "=> Render Cancel")
+    print(rt_info, "->", "RT One Frame =>", rt_one_frame)
 
 
 class MDSRT_PT_render_time(bpy.types.Panel):
@@ -113,25 +161,44 @@ class MDSRT_PT_render_time(bpy.types.Panel):
         row.operator("render.render", text="Render", icon_value=ico_b.icon_id)
 
 
-        layout.separator()
+        # checking draw layout
+        if rt_init_render == None:
+            pass
+        else:
+            # initial variable calculation render time
+            ini_frame_rt = rt_init_render
+            one_frame_rt = rt_one_frame
+            all_frame_rt = (one_frame_rt * all_frames)
+            date_now = datetime.now()
+            sec_complete = timedelta(seconds=all_frame_rt.total_seconds())
+            calc_complete = date_now + sec_complete
+            start_render = date_now.strftime("%Y-%m-%d %H:%M:%S")
+            complete_render = calc_complete.strftime("%Y-%m-%d %H:%M:%S")
 
 
-        # render time stats info
-        row = layout.row()
-        row.label(text="RT One Frame", icon="OUTPUT")
-        row.label(text="00:00:00:00")
+            layout.separator()
 
-        row = layout.row()
-        row.label(text="RT All Frames", icon="FILE_MOVIE")
-        row.label(text="00:00:00:00")
 
-        row = layout.row()
-        row.label(text="Render Start", icon="PLUGIN")
-        row.label(text="2021-08-09 17:31:23")
+            # render time stats info
+            row = layout.row()
+            row.label(text="RT Initialization", icon="IMAGE_PLANE")
+            row.label(text=str(ini_frame_rt))
 
-        row = layout.row()
-        row.label(text="Render Complete", icon="EXTERNAL_DRIVE")
-        row.label(text="2021-08-09 17:31:23")
+            row = layout.row()
+            row.label(text="RT One Frame", icon="OUTPUT")
+            row.label(text=str(one_frame_rt)[:-4])
+
+            row = layout.row()
+            row.label(text="RT All Frames", icon="FILE_MOVIE")
+            row.label(text=str(all_frame_rt)[:-4])
+
+            row = layout.row()
+            row.label(text="Render Start", icon="PLUGIN")
+            row.label(text=str(start_render))
+
+            row = layout.row()
+            row.label(text="Render Complete", icon="EXTERNAL_DRIVE")
+            row.label(text=str(complete_render))
 
 
 # initial dictionary for custom icons data
@@ -155,11 +222,14 @@ def register():
     pcoll.load("ic_mds_blue", os.path.join(mds_ic_dir, ic_mds_blue), 'IMAGE')
     preview_collections["main"] = pcoll
 
+    # append printing message render time stats timer
+    handlers.render_init.append(rt_init)
+    handlers.render_pre.append(rt_start)
+    handlers.render_complete.append(rt_complete)
+    handlers.render_cancel.append(rt_cancel)
+
     # register class panel render time
     bpy.utils.register_class(MDSRT_PT_render_time)
-
-    # print render stats in the console
-    rt_stats()
 
 
 def unregister():
