@@ -201,6 +201,55 @@ class MDSRT_PT_render_time(bpy.types.Panel):
             row.label(text=str(complete_render))
 
 
+            layout.separator()
+
+
+            # button website
+            row = layout.row(align=True)
+            row.operator(
+                "mdsrt.web_issues", text="GITHUB", icon="SCRIPTPLUGINS"
+                )
+            row.operator(
+                "mdsrt.web_mdsanima", text="MDSANIMA", icon_value=ico_b.icon_id
+                )
+            row.operator(
+                "mdsrt.web_blog", text="BLOG", icon_value=ico_w.icon_id
+                )
+
+
+class MDSRT_OT_web_issues(bpy.types.Operator):
+    bl_idname = "mdsrt.web_issues"
+    bl_label = "GITHUB ISSUES"
+    bl_description = "Opening the GITHUB ISSUES website in your browswer"
+
+    def execute(self, context):
+        git_iss = "https://github.com/mdsanima-dev/mdsanima-render-time/issues"
+        bpy.ops.wm.url_open("INVOKE_DEFAULT", url=git_iss)
+        return {"FINISHED"}
+
+
+class MDSRT_OT_web_mdsanima(bpy.types.Operator):
+    bl_idname = "mdsrt.web_mdsanima"
+    bl_label = "MDSANIMA"
+    bl_description = "Opening the MDSANIMA website in your browswer"
+
+    def execute(self, context):
+        mds_web = "https://mdsanima.com/"
+        bpy.ops.wm.url_open("INVOKE_DEFAULT", url=mds_web)
+        return {"FINISHED"}
+
+
+class MDSRT_OT_web_blog(bpy.types.Operator):
+    bl_idname = "mdsrt.web_blog"
+    bl_label = "BLOG"
+    bl_description = "Opening the MDSANIMA BLOG website in your browswer"
+
+    def execute(self, context):
+        blog_web = "https://blendervisual.blogspot.com/"
+        bpy.ops.wm.url_open("INVOKE_DEFAULT", url=blog_web)
+        return {"FINISHED"}
+
+
 # initial dictionary for custom icons data
 preview_collections = {}
 
@@ -230,6 +279,9 @@ def register():
 
     # register class panel render time
     bpy.utils.register_class(MDSRT_PT_render_time)
+    bpy.utils.register_class(MDSRT_OT_web_issues)
+    bpy.utils.register_class(MDSRT_OT_web_mdsanima)
+    bpy.utils.register_class(MDSRT_OT_web_blog)
 
 
 def unregister():
@@ -240,6 +292,9 @@ def unregister():
 
     # unregister class panel render time
     bpy.utils.unregister_class(MDSRT_PT_render_time)
+    bpy.utils.unregister_class(MDSRT_OT_web_issues)
+    bpy.utils.unregister_class(MDSRT_OT_web_mdsanima)
+    bpy.utils.unregister_class(MDSRT_OT_web_blog)
 
 
 if __name__ == "__main__":
