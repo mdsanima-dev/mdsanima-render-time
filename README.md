@@ -76,6 +76,6 @@ These are my social media, check it out please. Thanks.
 ![YouTube Channel Subscribers](https://img.shields.io/youtube/channel/subscribers/UCB5na2BRwrnwx00LCspbG5Q?style=social)
 ![YouTube Channel Views](https://img.shields.io/youtube/channel/views/UCB5na2BRwrnwx00LCspbG5Q?style=social)
 
-License
--------
+## License
+
 Blender Add-on `MDSANIMA RenderTime` is released under the terms of [GPL License](https://github.com/mdsanima-dev/mdsanima-render-time/blob/master/LICENSE)
