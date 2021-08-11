@@ -11,7 +11,7 @@ in `System Console` in **Blender**.
 Tested with [Blender 2.93.2](https://www.blender.org/download/releases/2-93/)
 but probably works on **older versions** as well and with **Blender 3.0.0 Alpha** too.
 
-<img width="400" alt="mdsanima-render-time-blender-addon_button" src="https://user-images.githubusercontent.com/3817871/128876799-13caec70-b7f0-49c5-9d7e-333838b5601f.png">
+<img width="256" alt="mdsanima-render-time-blender-addon_button" src="https://user-images.githubusercontent.com/3817871/128876799-13caec70-b7f0-49c5-9d7e-333838b5601f.png">
 
 ## How to Install
 
