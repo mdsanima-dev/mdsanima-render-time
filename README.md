@@ -52,6 +52,18 @@ messages.
 For some reason thats features is only for the development not allow and accecs
 for the **Blender Add-on** `MDSANIMA RenderTime`.
 
+Make release run in the console:
+
+```bash
+standard-version release
+```
+
+For checking if everything is ok:
+
+```bash
+standard-version release-test
+```
+
 ## Connect With Me
 
 Hi there, I'm Marcin Różewski aka [MDSANIMA](https://mdsanima.com).
