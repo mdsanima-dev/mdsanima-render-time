@@ -32,7 +32,7 @@
       "pretag": "printf '\n  creatign tag -> signed commits with GPG keys'",
       "posttag": "printf '\n  Run 'git push --follow-tags origin master' to publish'",
       "release": "standard-version --commit-all --sign",
-      "release-test": "standard-version --commit-all --sign --dry-run"
+      "release-test": "standard-version --dry-run"
     },
     "skip": {
       "bump": false,
