@@ -25,7 +25,7 @@ bl_info = {
     "doc_url": "https://github.com/mdsanima-dev/mdsanima-render-time/",
     "tracker_url": "https://github.com/mdsanima-dev/mdsanima-render-time/issues",
     "link": "https://mdsanima.com",
-    "support": "TESTING",
+    "support": "COMMUNITY",
     "category": "Render"
 }
 
