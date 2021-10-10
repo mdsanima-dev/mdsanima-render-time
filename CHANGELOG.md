@@ -9,8 +9,7 @@ at [blender addon documentation](https://github.com/mdsanima-dev/mdsanima-render
 
 ## 0.1.0
 
-|Date:|2021-08-11|
-|---|---|
+*Date:* *2021-08-11*
 
 ### Features
 
@@ -51,4 +50,3 @@ at [blender addon documentation](https://github.com/mdsanima-dev/mdsanima-render
 * documentation string ([442e22f](https://github.com/mdsanima-dev/mdsanima-render-time/commit/442e22fbe931bcb46a14a8bc189a5fd3f4cc0d90))
 * fix license doscrting ([d4c0fcb](https://github.com/mdsanima-dev/mdsanima-render-time/commit/d4c0fcb92514c6d4b391048a8653bdbc478b49a5))
 * smaller image in the `README.md` file ([5442e85](https://github.com/mdsanima-dev/mdsanima-render-time/commit/5442e8592833d18e3d49744d360c6718c3793a3b))
-
