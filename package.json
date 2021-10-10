@@ -16,7 +16,7 @@
   },
   "devDependencies": {
     "standard-version": "^9.3.0",
-    "conventional-changelog": "https://github.com/mdsanima/conventional-changelog/releases/tag/v5.0.0"
+    "conventional-changelog": "https://github.com/mdsanima/conventional-changelog/releases/tag/v5.0.1"
   },
   "standard-version": {
     "infile": "CHANGELOG.md",
