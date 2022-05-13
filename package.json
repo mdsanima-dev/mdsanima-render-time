@@ -1,22 +1,23 @@
 {
   "name": "mdsanima-render-time",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "author": {
     "name": "Marcin Różewski",
     "email": "marcinrozewski@gmail.com"
   },
   "description": "Only for automate versioning and changelog generation",
   "repository": "https://github.com/mdsanima-dev/mdsanima-render-time.git",
-  "homepage": "https://github.com/mdsanima-dev/mdsanima-render-time#readme",
+  "homepage": "https://github.com/mdsanima-dev/mdsanima-render-time/#readme",
   "license": "GPL",
   "project_urls": {
-    "Documentation": "https://github.com/mdsanima-dev/mdsanima-render-time",
-    "Source": "https://github.com/mdsanima-dev/mdsanima-render-time",
-    "Bug Tracker": "https://github.com/mdsanima-dev/mdsanima-render-time/issues"
+    "Documentation": "https://github.com/mdsanima-dev/mdsanima-render-time/",
+    "Source": "https://github.com/mdsanima-dev/mdsanima-render-time/",
+    "Bug Tracker": "https://github.com/mdsanima-dev/mdsanima-render-time/issues/"
   },
   "devDependencies": {
     "standard-version": "^9.3.0",
-    "conventional-changelog": "https://github.com/mdsanima/conventional-changelog/releases/tag/v5.0.1"
+    "conventional-changelog": "^5.0.1",
+    "mdsanima-conventional-changelog": "https://github.com/mdsanima/conventional-changelog/releases/tag/v5.0.1"
   },
   "standard-version": {
     "infile": "CHANGELOG.md",
@@ -35,33 +36,33 @@
     "skip": {
       "bump": false,
       "changelog": false,
-      "commit": false,
-      "tag": false
+      "commit": true,
+      "tag": true
     },
     "types": [
       {
         "type": "feat",
-        "section": "Features",
+        "section": "FEATURES",
         "hidden": false
       },
       {
         "type": "fix",
-        "section": "Bug Fixes",
+        "section": "BUG FIXES",
         "hidden": false
       },
       {
         "type": "docs",
-        "section": "Documentation",
+        "section": "DOCUMENTATION",
         "hidden": false
       },
       {
         "type": "test",
-        "section": "Tests",
+        "section": "TESTS",
         "hidden": false
       },
       {
         "type": "build",
-        "section": "Build System",
+        "section": "BUILD SYSTEM",
         "hidden": true
       },
       {
@@ -77,7 +78,7 @@
         "hidden": true
       }
     ],
-    "header": "# Changelog\n\nAll notable changes to this project will be documented in this file.\nSee [standard-version](https://github.com/conventional-changelog/standard-version)\nand `README.md` file for commit guidelines. Also you should check [conventional-changelog](https://github.com/mdsanima/conventional-changelog) for more detail.\n\nDocomentation for **mdsanima-render-time** is available\nat [blender addon documentation](https://github.com/mdsanima-dev/mdsanima-render-time) be sure to check it.\n"
+    "header": "# CHANGELOG\n\nAll notable changes to this project will be documented in this file.\n\nPlease check\n[standard-version](https://github.com/conventional-changelog/standard-version)\nand `README.md` file for commit guidelines. Also you should check\n[conventional-changelog](https://github.com/mdsanima/conventional-changelog)\nfor more detail.\n\nDocomentation for *Blender Addon* \n`MDSANIMA RenderTime` is available\nat [GitHub](https://github.com/mdsanima-dev/mdsanima-render-time/)\nbe sure to check it.\n"
   },
   "scripts": {
     "check": "standard-version --dry-run",
@@ -85,6 +86,7 @@
     "release-tag": "standard-version -s -t mdsanima-render-time-",
     "alpha": "standard-version --prerelease alpha",
     "beta": "standard-version --prerelease beta",
+    "test": "echo testing...",
     "test-skip": "npm run release -- --skip.changelog --dry-run"
   }
 }
