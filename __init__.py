@@ -1,37 +1,36 @@
+# Copyritht © 2021 - 2022 Marcin Różewski MDSANIMA
+
+"""The Blender add-on estimates and calculate how long your animation will take
+to render done based on the rendering time of the only one frame. The add-on is
+located in the ``View3D > UI`` area panels and show rendering time statistic.
+
+You will also find here useful rendering statistics as well as automations of
+various time-consuming activities and manny more useful features and tools.
 """
-Blender Addon for estimated total rendering time for all frames in your
-animation.
-
-Creates a Panel in the UI 3D View to show rendering statistic.
-"""
 
 
-import os
-import bpy
-from datetime import datetime
-
-
-# addon information dictionary
 bl_info = {
     "name": "MDSANIMA RenderTime",
-    "description": "Estimated total rendering time for all frames",
-    "author": "Marcin Różewski (mdsanima)",
+    "description": "Estimate how long you animation will take to render done.",
+    "author": "Marcin Różewski",
     "license": "GPL",
-    "deps": "",
-    "version": (0, 1, 0),
-    "blender": (2, 93, 2),
+    "version": (0, 2, 0),
+    "blender": (3, 1, 2),
     "location": "View3D > UI",
-    "warning": "",
     "doc_url": "https://github.com/mdsanima-dev/mdsanima-render-time/",
-    "tracker_url": "https://github.com/mdsanima-dev/mdsanima-render-time/issues",
-    "link": "https://mdsanima.com",
+    "tracker_url": "https://github.com/mdsanima-dev/mdsanima-render-time/issues/",
+    "link": "https://dev.mdsanima.com",
     "support": "COMMUNITY",
-    "category": "Render"
+    "category": "Render",
 }
 
 
+import os
+from datetime import datetime
+from datetime import timedelta
+
+import bpy
 from bpy.app import handlers
-from datetime import datetime, timedelta
 
 
 # initail global variable timer
@@ -56,7 +55,7 @@ def rt_start(dummy):
     global ti_start
     global rt_init_render
     ti_start = datetime.now()
-    rt_init_render = (ti_start - ti_init)
+    rt_init_render = ti_start - ti_init
     print(rt_info, "->", str(ti_start).ljust(26), "=> Render Start")
     print(rt_info, "->", "RT Initialization =>", rt_init_render)
 
@@ -66,7 +65,7 @@ def rt_complete(dummy):
     global ti_complete
     global rt_one_frame
     ti_complete = datetime.now()
-    rt_one_frame = (ti_complete - ti_start)
+    rt_one_frame = ti_complete - ti_start
     print(rt_info, "->", str(ti_complete).ljust(26), "=> Render Complete")
     print(rt_info, "->", "RT One Frame =>", rt_one_frame)
 
@@ -76,17 +75,20 @@ def rt_cancel(dummy):
     global ti_cancel
     global rt_one_frame
     ti_cancel = datetime.now()
-    rt_one_frame = (ti_cancel - ti_start)
+    rt_one_frame = ti_cancel - ti_start
     print(rt_info, "->", str(ti_cancel).ljust(26), "=> Render Cancel")
     print(rt_info, "->", "RT One Frame =>", rt_one_frame)
 
 
 class MDSRT_PT_render_time(bpy.types.Panel):
     """Creates a Panel in the UI 3D View"""
-    MDSRT_version = str(bl_info["version"])\
-        .replace("(", "")\
-        .replace(")", "")\
+
+    MDSRT_version = (
+        str(bl_info["version"])
+        .replace("(", "")
+        .replace(")", "")
         .replace(", ", ".")
+    )
     bl_idname = "MDSRT_PT_render_time"
     bl_label = "MDSANIMA RenderTime v" + MDSRT_version
     bl_space_type = "VIEW_3D"
@@ -116,7 +118,6 @@ class MDSRT_PT_render_time(bpy.types.Panel):
         all_frames = (end_frames - sta_frames) + check_frame
         time_code = bpy.utils.smpte_from_frame(all_frames)
 
-
         # render properties stats info
         row = layout.row()
         row.label(text="Render Engine", icon="DESKTOP")
@@ -130,9 +131,7 @@ class MDSRT_PT_render_time(bpy.types.Panel):
         row.label(text="Samples", icon="SHADING_BBOX")
         row.label(text=str(scene.cycles.samples))
 
-
         layout.separator()
-
 
         # output properties stats info
         row = layout.row()
@@ -151,15 +150,12 @@ class MDSRT_PT_render_time(bpy.types.Panel):
         row.label(text="Duration TC", icon="PREVIEW_RANGE")
         row.label(text=time_code)
 
-
         layout.separator()
-
 
         # render button operator
         row = layout.row()
         row.scale_y = 2.0
-        row.operator("render.render", text="Render", icon_value=ico_b.icon_id)
-
+        row.operator("render.render", text="RENDER", icon_value=ico_b.icon_id)
 
         # checking draw layout
         if rt_init_render == None:
@@ -168,16 +164,14 @@ class MDSRT_PT_render_time(bpy.types.Panel):
             # initial variable calculation render time
             ini_frame_rt = rt_init_render
             one_frame_rt = rt_one_frame
-            all_frame_rt = (one_frame_rt * all_frames)
+            all_frame_rt = one_frame_rt * all_frames
             date_now = datetime.now()
             sec_complete = timedelta(seconds=all_frame_rt.total_seconds())
             calc_complete = date_now + sec_complete
             start_render = date_now.strftime("%Y-%m-%d %H:%M:%S")
             complete_render = calc_complete.strftime("%Y-%m-%d %H:%M:%S")
 
-
             layout.separator()
-
 
             # render time stats info
             row = layout.row()
@@ -200,27 +194,25 @@ class MDSRT_PT_render_time(bpy.types.Panel):
             row.label(text="Render Complete", icon="EXTERNAL_DRIVE")
             row.label(text=str(complete_render))
 
-
             layout.separator()
-
 
             # button website
             row = layout.row(align=True)
             row.operator(
                 "mdsrt.web_issues", text="GITHUB", icon="SCRIPTPLUGINS"
-                )
+            )
             row.operator(
                 "mdsrt.web_mdsanima", text="MDSANIMA", icon_value=ico_b.icon_id
-                )
+            )
             row.operator(
                 "mdsrt.web_blog", text="BLOG", icon_value=ico_w.icon_id
-                )
+            )
 
 
 class MDSRT_OT_web_issues(bpy.types.Operator):
     bl_idname = "mdsrt.web_issues"
     bl_label = "GITHUB ISSUES"
-    bl_description = "Opening the GITHUB ISSUES website in your browswer"
+    bl_description = "Open a GitHub Issues website in the web browser."
 
     def execute(self, context):
         git_iss = "https://github.com/mdsanima-dev/mdsanima-render-time/issues"
@@ -231,10 +223,10 @@ class MDSRT_OT_web_issues(bpy.types.Operator):
 class MDSRT_OT_web_mdsanima(bpy.types.Operator):
     bl_idname = "mdsrt.web_mdsanima"
     bl_label = "MDSANIMA"
-    bl_description = "Opening the MDSANIMA website in your browswer"
+    bl_description = "Open a MDSANIMA website in the web browser."
 
     def execute(self, context):
-        mds_web = "https://mdsanima.com/"
+        mds_web = "https://dev.mdsanima.com"
         bpy.ops.wm.url_open("INVOKE_DEFAULT", url=mds_web)
         return {"FINISHED"}
 
@@ -242,10 +234,10 @@ class MDSRT_OT_web_mdsanima(bpy.types.Operator):
 class MDSRT_OT_web_blog(bpy.types.Operator):
     bl_idname = "mdsrt.web_blog"
     bl_label = "BLOG"
-    bl_description = "Opening the MDSANIMA BLOG website in your browswer"
+    bl_description = "Open a Blender Visual Blog website in the web browser."
 
     def execute(self, context):
-        blog_web = "https://blendervisual.blogspot.com/"
+        blog_web = "https://blendervisual.blogspot.com"
         bpy.ops.wm.url_open("INVOKE_DEFAULT", url=blog_web)
         return {"FINISHED"}
 
@@ -256,19 +248,20 @@ preview_collections = {}
 
 def register():
     # initial variable icons name
-    ic_mds_whit = "ic_mdsanima_12_drp_sdw_w.png"
-    ic_mds_blue = "ic_mdsanima_20_drp_sdw_b.png"
+    ic_mds_whit = "logo_mdsanima_default_01-cyan_1x.png"
+    ic_mds_blue = "logo_mdsanima_default_11-orange_1x.png"
 
     # store custom icons data
     import bpy.utils.previews
+
     pcoll = bpy.utils.previews.new()
 
     # path to the folder where the icon is
     mds_ic_dir = os.path.join(os.path.dirname(__file__), "icons")
 
     # load a preview thumbnail of a file and store in the previews collection
-    pcoll.load("ic_mds_whit", os.path.join(mds_ic_dir, ic_mds_whit), 'IMAGE')
-    pcoll.load("ic_mds_blue", os.path.join(mds_ic_dir, ic_mds_blue), 'IMAGE')
+    pcoll.load("ic_mds_whit", os.path.join(mds_ic_dir, ic_mds_whit), "IMAGE")
+    pcoll.load("ic_mds_blue", os.path.join(mds_ic_dir, ic_mds_blue), "IMAGE")
     preview_collections["main"] = pcoll
 
     # append printing message render time stats timer
