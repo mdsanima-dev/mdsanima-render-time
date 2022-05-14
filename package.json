@@ -78,7 +78,7 @@
         "hidden": true
       }
     ],
-    "header": "# CHANGELOG\n\nAll notable changes to this project will be documented in this file.\n\nPlease check\n[standard-version](https://github.com/conventional-changelog/standard-version)\nand `README.md` file for commit guidelines. Also you should check\n[conventional-changelog](https://github.com/mdsanima/conventional-changelog)\nfor more detail.\n\nDocomentation for *Blender Addon* \n`MDSANIMA RenderTime` is available\nat [GitHub](https://github.com/mdsanima-dev/mdsanima-render-time/)\nbe sure to check it.\n"
+    "header": "# CHANGELOG\n\nAll notable changes to this project will be documented in this file.\n\nPlease check\n[standard-version](https://github.com/conventional-changelog/standard-version)\nand `README.md` file for commit guidelines. Also you should check\n[conventional-changelog](https://github.com/mdsanima/conventional-changelog)\nfor more detail.\n\nDocomentation for *Blender Addon*\n`MDSANIMA RenderTime` is available\nat [GitHub](https://github.com/mdsanima-dev/mdsanima-render-time/)\nbe sure to check it.\n"
   },
   "scripts": {
     "check": "standard-version --dry-run",

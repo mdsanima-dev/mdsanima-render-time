@@ -1,17 +1,47 @@
-# Changelog
+# CHANGELOG
 
 All notable changes to this project will be documented in this file.
-See [standard-version](https://github.com/conventional-changelog/standard-version)
-and `README.md` file for commit guidelines. Also you should check [conventional-changelog](https://github.com/mdsanima/conventional-changelog) for more detail.
 
-Docomentation for **mdsanima-render-time** is available
-at [blender addon documentation](https://github.com/mdsanima-dev/mdsanima-render-time) be sure to check it.
+Please check
+[standard-version](https://github.com/conventional-changelog/standard-version)
+and `README.md` file for commit guidelines. Also you should check
+[conventional-changelog](https://github.com/mdsanima/conventional-changelog)
+for more detail.
+
+Docomentation for *Blender Addon*
+`MDSANIMA RenderTime` is available
+at [GitHub](https://github.com/mdsanima-dev/mdsanima-render-time/)
+be sure to check it.
+
+## [0.1.1](https://github.com/mdsanima-dev/mdsanima-render-time/compare/v0.1.0...v0.1.1)
+
+*Date:* *2022-05-14*
+
+### DOCUMENTATION
+
+* fixed date string ([74cedf9](https://github.com/mdsanima-dev/mdsanima-render-time/commit/74cedf9f1f6825d8559f54eb669dc1752bb924af))
+* fixed docstring typo new info ([c717f4d](https://github.com/mdsanima-dev/mdsanima-render-time/commit/c717f4de14bf6943336f9a3c38943c8ff0d2572c))
+
+### FEATURES
+
+* add new `mdsanima` icons logos withs four shape options ([b29dd1a](https://github.com/mdsanima-dev/mdsanima-render-time/commit/b29dd1a630e85ca7bf367d729ab019fa752bae78))
+* adding new  icons on all button closes [#23](https://github.com/mdsanima-dev/mdsanima-render-time/issues/23) ([dcf8eca](https://github.com/mdsanima-dev/mdsanima-render-time/commit/dcf8eca3d10c0cb35f37fe42e204178c57de659b))
+* **devs:** add `black` and `isort` python code formater closes [#29](https://github.com/mdsanima-dev/mdsanima-render-time/issues/29) ([f50cfcc](https://github.com/mdsanima-dev/mdsanima-render-time/commit/f50cfcc6eee6dea5afed291c7f8dffc448ee81e9))
+
+### BUG FIXES
+
+* button help and stats layout grid glow ([d82bffa](https://github.com/mdsanima-dev/mdsanima-render-time/commit/d82bffa1d5669628bcf96197a346df12450e464e))
+* config for more files ([3f68240](https://github.com/mdsanima-dev/mdsanima-render-time/commit/3f682402631ba63e3880a1df39165f0f837952d7))
+* docstring typo help string on button in the bottom closes [#22](https://github.com/mdsanima-dev/mdsanima-render-time/issues/22) ([ec42cc0](https://github.com/mdsanima-dev/mdsanima-render-time/commit/ec42cc0a8bf087c1ffd0eabc5e120624e04cc1d6))
+* new icons logo mdsanima ([407c85a](https://github.com/mdsanima-dev/mdsanima-render-time/commit/407c85a7c75eddce654dacc2ce24251b76a91adc))
+* update version dependencis ([4653252](https://github.com/mdsanima-dev/mdsanima-render-time/commit/4653252f40d151c9ff6265270d77adc3952f7a4d))
+* updated program name brief idea and copyright year ([db7a7f4](https://github.com/mdsanima-dev/mdsanima-render-time/commit/db7a7f4e67c70b6b451f96879d76f10075c13207))
 
 ## 0.1.0
 
 *Date:* *2021-08-11*
 
-### Features
+### FEATURES
 
 * calculating render time ui layout closes [#3](https://github.com/mdsanima-dev/mdsanima-render-time/issues/3) ([387f5c8](https://github.com/mdsanima-dev/mdsanima-render-time/commit/387f5c863aea4f940b581d493380cac71a0affa2)), closes [#10](https://github.com/mdsanima-dev/mdsanima-render-time/issues/10) [#11](https://github.com/mdsanima-dev/mdsanima-render-time/issues/11)
 * layout text and icon for render time closes [#12](https://github.com/mdsanima-dev/mdsanima-render-time/issues/12) ([7a3d824](https://github.com/mdsanima-dev/mdsanima-render-time/commit/7a3d824b2e6188e739cc8b614d63917cf29ea384))
@@ -25,7 +55,7 @@ at [blender addon documentation](https://github.com/mdsanima-dev/mdsanima-render
 * preview colleciton custom icons data ([17cf63b](https://github.com/mdsanima-dev/mdsanima-render-time/commit/17cf63bfa456c28543dc0df8fb8487848e79adbc))
 * ui panel, add button for rendering, print stats in console ([794194f](https://github.com/mdsanima-dev/mdsanima-render-time/commit/794194f6f30c6dbd62ae23feaa267a5676f5af17))
 
-### Bug Fixes
+### BUG FIXES
 
 * **devs:** remove `printf` because it is used as the commit message ([fc433f6](https://github.com/mdsanima-dev/mdsanima-render-time/commit/fc433f6e50b014705ab6a5b06be07e3ec886388c))
 * added variable and return time for all ``core`` function ([faa0325](https://github.com/mdsanima-dev/mdsanima-render-time/commit/faa03256a6d99ef86558389b9e349e424485981a))
@@ -39,10 +69,10 @@ at [blender addon documentation](https://github.com/mdsanima-dev/mdsanima-render
 * update year and name ([b1ed498](https://github.com/mdsanima-dev/mdsanima-render-time/commit/b1ed4982e0f2321cc79c5122b86ce6dccd0c7dbc))
 * **devs:** formating file and adding `standard-version` scripts ([db3e9e6](https://github.com/mdsanima-dev/mdsanima-render-time/commit/db3e9e6d01f177787de2c976d69ea7460add4d08))
 * initial empty init ([a2f02ce](https://github.com/mdsanima-dev/mdsanima-render-time/commit/a2f02cede8b319d06a461e149935f00a7febb9b9))
-* removed link variable from `bl_info` dictionary closes [#1](https://github.com/mdsanima-dev/mdsanima-render-time/issues/1) ([2f08648](https://github.com/mdsanima-dev/mdsanima-render-time/commit/2f08648281d25f2d5d69924cdff9ed931c2e6947)), closes [/www.python.org/dev/peps/pep-0008/#id19](https://github.com/mdsanima-dev//www.python.org/dev/peps/pep-0008//issues/id19)
+* removed link variable from `bl_info` dictionary closes [#1](https://github.com/mdsanima-dev/mdsanima-render-time/issues/1) ([2f08648](https://github.com/mdsanima-dev/mdsanima-render-time/commit/2f08648281d25f2d5d69924cdff9ed931c2e6947)), closes [#19](https://github.com/mdsanima-dev/mdsanima-render-time/issues/19)
 * select end of line sequence `lf` ([cd3cf52](https://github.com/mdsanima-dev/mdsanima-render-time/commit/cd3cf525c62c69e15a558755a9c9e50e4e45f763))
 
-### Documentation
+### DOCUMENTATION
 
 * add console command to make `release` ([f653917](https://github.com/mdsanima-dev/mdsanima-render-time/commit/f6539174cf81a60d0ab69ec49499eba31e911c6d))
 * add information how to use and how to install on `README.md` file ([2667c86](https://github.com/mdsanima-dev/mdsanima-render-time/commit/2667c86ee1fa6b7a459e3338dfe1b94da0445915))

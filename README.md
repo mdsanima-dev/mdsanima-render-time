@@ -20,8 +20,8 @@ recommended.
 
 <div align="center">
   <img
-    width="400" alt="blender-add-on-mdsanima-render-time"
-    src="https://user-images.githubusercontent.com/3817871/128876799-13caec70-b7f0-49c5-9d7e-333838b5601f.png"
+    width="400" alt="mdsanima-render-time-v0.1.1"
+    src="https://user-images.githubusercontent.com/3817871/168426652-d4d43bab-b619-40f1-82d4-67b758e968d4.jpg"
   />
 </div>
 
