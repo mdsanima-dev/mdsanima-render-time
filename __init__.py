@@ -14,7 +14,7 @@ bl_info = {
     "description": "Estimate how long you animation will take to render done.",
     "author": "Marcin Różewski",
     "license": "GPL",
-    "version": (0, 2, 0),
+    "version": (0, 1, 1),
     "blender": (3, 1, 2),
     "location": "View3D > UI",
     "doc_url": "https://github.com/mdsanima-dev/mdsanima-render-time/",
@@ -120,41 +120,43 @@ class MDSRT_PT_render_time(bpy.types.Panel):
         all_frames = (end_frames - sta_frames) + check_frame
         time_code = bpy.utils.smpte_from_frame(all_frames)
 
-        # render properties stats info
-        row = layout.row()
+        # stats info render properties
+        row = layout.grid_flow(
+            row_major=True,
+            columns=2,
+            even_columns=True,
+            even_rows=True,
+            align=False,
+        )
         row.label(text="Render Engine", icon="DESKTOP")
         row.label(text=scene.render.engine)
-
-        row = layout.row()
         row.label(text="Device", icon="MEMORY")
         row.label(text=scene.cycles.device)
-
-        row = layout.row()
         row.label(text="Samples", icon="SHADING_BBOX")
         row.label(text=str(scene.cycles.samples))
 
         layout.separator()
 
-        # output properties stats info
-        row = layout.row()
+        # stats info output properties
+        row = layout.grid_flow(
+            row_major=True,
+            columns=2,
+            even_columns=True,
+            even_rows=True,
+            align=False,
+        )
         row.label(text="Resolution", icon="RESTRICT_VIEW_ON")
         row.label(text=res_val)
-
-        row = layout.row()
         row.label(text="All Frames", icon="RENDER_ANIMATION")
         row.label(text=str(all_frames))
-
-        row = layout.row()
         row.label(text="Frame Rate", icon="OUTLINER_DATA_CAMERA")
         row.label(text=str(scene.render.fps) + " fps")
-
-        row = layout.row()
         row.label(text="Duration TC", icon="PREVIEW_RANGE")
         row.label(text=time_code)
 
         layout.separator()
 
-        # render button operator
+        # button render
         row = layout.row()
         row.scale_y = 2.0
         row.operator(
@@ -179,24 +181,22 @@ class MDSRT_PT_render_time(bpy.types.Panel):
 
             layout.separator()
 
-            # render time stats info
-            row = layout.row()
+            # stats info render time
+            row = layout.grid_flow(
+                row_major=True,
+                columns=2,
+                even_columns=True,
+                even_rows=True,
+                align=False,
+            )
             row.label(text="RT Initialization", icon="IMAGE_PLANE")
             row.label(text=str(ini_frame_rt))
-
-            row = layout.row()
             row.label(text="RT One Frame", icon="OUTPUT")
             row.label(text=str(one_frame_rt)[:-4])
-
-            row = layout.row()
             row.label(text="RT All Frames", icon="FILE_MOVIE")
             row.label(text=str(all_frame_rt)[:-4])
-
-            row = layout.row()
             row.label(text="Render Start", icon="PLUGIN")
             row.label(text=str(start_render))
-
-            row = layout.row()
             row.label(text="Render Complete", icon="EXTERNAL_DRIVE")
             row.label(text=str(complete_render))
 
@@ -224,7 +224,7 @@ class MDSRT_PT_render_time(bpy.types.Panel):
 class MDSRT_OT_web_issues(bpy.types.Operator):
     bl_idname = "mdsrt.web_issues"
     bl_label = "GITHUB ISSUES"
-    bl_description = "Open a GitHub Issues website in the web browser."
+    bl_description = "Open a GitHub Issues website in the web browser"
 
     def execute(self, context):
         git_iss = "https://github.com/mdsanima-dev/mdsanima-render-time/issues"
@@ -235,7 +235,7 @@ class MDSRT_OT_web_issues(bpy.types.Operator):
 class MDSRT_OT_web_mdsanima(bpy.types.Operator):
     bl_idname = "mdsrt.web_mdsanima"
     bl_label = "MDSANIMA"
-    bl_description = "Open a MDSANIMA website in the web browser."
+    bl_description = "Open a MDSANIMA website in the web browser"
 
     def execute(self, context):
         mds_web = "https://dev.mdsanima.com"
@@ -246,7 +246,7 @@ class MDSRT_OT_web_mdsanima(bpy.types.Operator):
 class MDSRT_OT_web_blog(bpy.types.Operator):
     bl_idname = "mdsrt.web_blog"
     bl_label = "BLOG"
-    bl_description = "Open a Blender Visual Blog website in the web browser."
+    bl_description = "Open a Blender Visual Blog website in the web browser"
 
     def execute(self, context):
         blog_web = "https://blendervisual.blogspot.com"
