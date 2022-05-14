@@ -16,6 +16,7 @@ indent_size = 2
 max_line_length = off
 
 [*.py]
+profile = black
 max_line_length = 79
 
 [*.yml]
@@ -31,5 +32,13 @@ indent_style = space
 indent_size = 2
 
 [*.json]
+indent_style = space
+indent_size = 2
+
+[*.js]
+indent_style = space
+indent_size = 2
+
+[*.md]
 indent_style = space
 indent_size = 2
