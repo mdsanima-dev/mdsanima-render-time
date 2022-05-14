@@ -93,7 +93,7 @@ class MDSRT_PT_render_time(bpy.types.Panel):
     bl_label = "MDSANIMA RenderTime v" + MDSRT_version
     bl_space_type = "VIEW_3D"
     bl_region_type = "UI"
-    bl_category = "MDSANIMA RenderTime"
+    bl_category = "MDSANIMA"
 
     def draw(self, context):
         # initial variable layout
@@ -102,8 +102,10 @@ class MDSRT_PT_render_time(bpy.types.Panel):
 
         # initial variable get icons from dictionary
         pcoll = preview_collections["main"]
-        ico_w = pcoll["ic_mds_whit"]
-        ico_b = pcoll["ic_mds_blue"]
+        icon_mdsanima_def_cyan = pcoll["ic_mds_cya"]
+        icon_mdsanima_def_red = pcoll["ic_mds_red"]
+        icon_mdsanima_def_orange = pcoll["ic_mds_ora"]
+        icon_mdsanima_def_amber = pcoll["ic_mds_amb"]
 
         # initial variable calculation resolution
         perc_res_v = 100 / scene.render.resolution_percentage
@@ -155,7 +157,11 @@ class MDSRT_PT_render_time(bpy.types.Panel):
         # render button operator
         row = layout.row()
         row.scale_y = 2.0
-        row.operator("render.render", text="RENDER", icon_value=ico_b.icon_id)
+        row.operator(
+            "render.render",
+            text="RENDER",
+            icon_value=icon_mdsanima_def_cyan.icon_id,
+        )
 
         # checking draw layout
         if rt_init_render == None:
@@ -199,13 +205,19 @@ class MDSRT_PT_render_time(bpy.types.Panel):
             # button website
             row = layout.row(align=True)
             row.operator(
-                "mdsrt.web_issues", text="GITHUB", icon="SCRIPTPLUGINS"
+                "mdsrt.web_issues",
+                text="GITHUB",
+                icon_value=icon_mdsanima_def_red.icon_id,
             )
             row.operator(
-                "mdsrt.web_mdsanima", text="MDSANIMA", icon_value=ico_b.icon_id
+                "mdsrt.web_mdsanima",
+                text="MDSANIMA",
+                icon_value=icon_mdsanima_def_orange.icon_id,
             )
             row.operator(
-                "mdsrt.web_blog", text="BLOG", icon_value=ico_w.icon_id
+                "mdsrt.web_blog",
+                text="BLOG",
+                icon_value=icon_mdsanima_def_amber.icon_id,
             )
 
 
@@ -248,8 +260,10 @@ preview_collections = {}
 
 def register():
     # initial variable icons name
-    ic_mds_whit = "logo_mdsanima_default_01-cyan_1x.png"
-    ic_mds_blue = "logo_mdsanima_default_11-orange_1x.png"
+    ic_mds_cya = "logo_mdsanima_default_01-cyan_1x.png"
+    ic_mds_red = "logo_mdsanima_default_10-red_1x.png"
+    ic_mds_ora = "logo_mdsanima_default_11-orange_1x.png"
+    ic_mds_amb = "logo_mdsanima_default_12-amber_1x.png"
 
     # store custom icons data
     import bpy.utils.previews
@@ -260,8 +274,10 @@ def register():
     mds_ic_dir = os.path.join(os.path.dirname(__file__), "icons")
 
     # load a preview thumbnail of a file and store in the previews collection
-    pcoll.load("ic_mds_whit", os.path.join(mds_ic_dir, ic_mds_whit), "IMAGE")
-    pcoll.load("ic_mds_blue", os.path.join(mds_ic_dir, ic_mds_blue), "IMAGE")
+    pcoll.load("ic_mds_cya", os.path.join(mds_ic_dir, ic_mds_cya), "IMAGE")
+    pcoll.load("ic_mds_red", os.path.join(mds_ic_dir, ic_mds_red), "IMAGE")
+    pcoll.load("ic_mds_ora", os.path.join(mds_ic_dir, ic_mds_ora), "IMAGE")
+    pcoll.load("ic_mds_amb", os.path.join(mds_ic_dir, ic_mds_amb), "IMAGE")
     preview_collections["main"] = pcoll
 
     # append printing message render time stats timer
