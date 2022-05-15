@@ -14,9 +14,9 @@ statistic. Automatically calculating rendering time for frame range based on
 your scene then shows date when rendering is done. The add-on also printing
 rendering statistic in `System Console` inside *Blender* terminal.
 
-Developed on [Python 3.10.4][python] and tested on [Blender 3.1.2][bl-3] and [2.93 LTS][bl-2] version.
-The add-on also works on *older Blender versions* as well but this is not
-recommended.
+Developed on [Python 3.10.4][python] and tested on [Blender 3.1.2][bl-3] and
+[2.93 LTS][bl-2] version. The add-on also works on *older Blender versions* as
+well but this is not recommended.
 
 <div align="center">
   <img
